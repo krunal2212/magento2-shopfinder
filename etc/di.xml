@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Levelshoes_Shopfinder extension
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category  Levelshoes
+ * @package   Levelshoes_Shopfinder
+ * @copyright Copyright (c) 2023
+ * @license   http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Levelshoes\Shopfinder\Api\ShopRepositoryInterface" type="Levelshoes\Shopfinder\Model\ShopRepository"/>
+    <preference for="Levelshoes\Shopfinder\Api\Data\ShopInterface" type="Levelshoes\Shopfinder\Model\Shop"/>
+    <preference for="Levelshoes\Shopfinder\Api\Data\ShopSearchResultInterface" type="Magento\Framework\Api\SearchResults"/>
+    <type name="Levelshoes\Shopfinder\Model\ResourceModel\Shop\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">levelshoes_shopfinder_shop</argument>
+            <argument name="eventPrefix" xsi:type="string">levelshoes_shopfinder_shop_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">shop_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Levelshoes\Shopfinder\Model\ResourceModel\Shop</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="levelshoes_shopfinder_shop_listing_data_source" xsi:type="string">Levelshoes\Shopfinder\Model\ResourceModel\Shop\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="LevelshoesShopfinderShopImageUploader" type="Levelshoes\Shopfinder\Model\Uploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="const">Levelshoes\Shopfinder\Model\Uploader::SHOP_IMAGE_TMP_PATH</argument>
+            <argument name="basePath" xsi:type="const">Levelshoes\Shopfinder\Model\Uploader::SHOP_IMAGE_PATH</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Levelshoes\Shopfinder\Controller\Adminhtml\Shop\Image\Upload">
+        <arguments>
+            <argument name="uploader" xsi:type="object">LevelshoesShopfinderShopImageUploader</argument>
+        </arguments>
+    </type>
+    <type name="Levelshoes\Shopfinder\Model\UploaderPool">
+        <arguments>
+            <argument name="uploaders" xsi:type="array">
+                <item name="image" xsi:type="object">LevelshoesShopfinderShopImageUploader</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

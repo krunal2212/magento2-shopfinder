@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Levelshoes_Shopfinder extension
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category  Levelshoes
+ * @package   Levelshoes_Shopfinder
+ * @copyright Copyright (c) 2023
+ * @license   http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="jquery/fileUploader/css/jquery.fileupload-ui.css"/>
+    </head>
+    <update handle="editor"/>
+    <body>
+        <referenceContainer name="content">
+            <uiComponent name="levelshoes_shopfinder_shop_form"/>
+        </referenceContainer>
+    </body>
+</page>

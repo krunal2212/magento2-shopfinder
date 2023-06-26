@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Levelshoes_Shopfinder extension
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category  Levelshoes
+ * @package   Levelshoes_Shopfinder
+ * @copyright Copyright (c) 2023
+ * @license   http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Levelshoes\Shopfinder\Controller\Adminhtml\Shop\MassDelete">
+        <arguments>
+            <argument name="successMessage" xsi:type="string">A total of %1 Finders have been deleted.</argument>
+            <argument name="errorMessage" xsi:type="string" translate="true">An error occurred while deleting Finders.</argument>
+        </arguments>
+    </type>
+</config>

@@ -1,0 +1,68 @@
+
+#Query to list Shops
+type Query
+{
+    ListShopsGraphql : [ListShops] @resolver(class: "Levelshoes\\Shopfinder\\Model\\Resolver\\ListShopsGraphql") @doc(description:"List Shop Api")
+}
+
+#Query to get Store information by store ID
+type Query
+{
+    ListShopsByStoreIDGraphql (
+        shop_id:Int @doc(description: "ShopId")
+    ): ListShops @resolver(class: "Levelshoes\\Shopfinder\\Model\\Resolver\\ListShopsByStoreIDGraphql") @doc(description:"Get Shop by Id")
+}
+
+
+
+#Mutation for Update the shop ( Shop Image will not be the part of This mutation)
+type Mutation {
+    editShopData (
+        shop_id:Int @doc(description: "ShopId")
+        shopname: String @doc(description: "shopname")
+        identifier: String @doc(description: "identifier")
+        addresslineone: String @doc(description: "addresslineone")
+        addresslinetwo: String @doc (description: "addresslinetwo")
+        city: String @doc (description: "city")
+        country: String @doc (description: "country")
+        state: String @doc (description: "state")
+        zipcode: String @doc (description: "zipcode")
+        phone: String @doc (description: "phone")
+        latitude: String @doc (description: "latitude")
+        longitude: String @doc (description: "longitude")
+        email: String @doc (description: "email")
+        shopimage: String @doc (description: "shopimage")
+        status: String @doc (description: "status")
+        cancollect: String @doc (description: "cancollect")
+        shopdescription: String @doc (description: "shopdescription")
+        shopopentimedetail: String @doc (description: "shopopentimedetail")
+        storeview: String @doc (description: "storeview")
+    ): editShopDataOutput @resolver(class: "Levelshoes\\Shopfinder\\Model\\Resolver\\EditShopData")
+}
+
+
+type ListShops {
+    shopname: String @doc(description: "shopname")
+    identifier: String @doc(description: "identifier")
+    addresslineone: String @doc(description: "addresslineone")
+    addresslinetwo: String @doc (description: "addresslinetwo")
+    city: String @doc (description: "city")
+    country: String @doc (description: "country")
+    state: String @doc (description: "state")
+    zipcode: String @doc (description: "zipcode")
+    phone: String @doc (description: "phone")
+    latitude: String @doc (description: "latitude")
+    longitude: String @doc (description: "longitude")
+    shopimage: String @doc (description: "longitude")
+    email: String @doc (description: "email")
+    status: Boolean @doc (description: "status")
+    cancollect: Boolean @doc (description: "cancollect")
+    shopdescription: String @doc (description: "shopdescription")
+    shopopentimedetail: String @doc (description: "shopopentimedetail")
+    storeview: String @doc (description: "storeview")
+}
+
+type editShopDataOutput {
+    status: Boolean
+    message: String
+}
